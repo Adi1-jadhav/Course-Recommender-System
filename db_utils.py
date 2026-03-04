@@ -24,14 +24,19 @@ def get_db():
                 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=25000)
                 # Test connection
                 client.admin.command('ping')
-                _db = client.get_default_database() or client['course_recommender']
-                print("✅ Connected to MongoDB Atlas successfully!")
+                # Explicitly check for None instead of using 'or' to avoid truth value testing error
+                default_db = client.get_default_database()
+                if default_db is not None:
+                    _db = default_db
+                else:
+                    _db = client['CourseMatchDB']
+                print("[OK] Connected to MongoDB Atlas successfully!")
             except Exception as e:
-                print(f"❌ MongoDB connection failed: {e}")
-                print("⚠️ Falling back to Local JSON Data for now...")
+                print(f"[ERROR] MongoDB connection failed: {e}")
+                print("[WARN] Falling back to Local JSON Data for now...")
                 _db = "local_json"
         else:
-            print("No MONGO_URI found, using local JSON fallback")
+            print("[INFO] No MONGO_URI found, using local JSON fallback")
             _db = "local_json"
     return _db
 
@@ -65,13 +70,13 @@ def seed_database():
         with open(COURSES_PATH, 'r', encoding='utf-8') as f:
             courses = json.load(f)
             db.courses.insert_many(courses)
-            print("✅ Seeded Courses to MongoDB")
+            print("[OK] Seeded Courses to MongoDB")
 
     # Seed Careers
     if db.careers.count_documents({}) == 0:
         with open(CAREERS_PATH, 'r', encoding='utf-8') as f:
             careers = json.load(f)
             db.careers.insert_one(careers)
-            print("✅ Seeded Careers to MongoDB")
+            print("[OK] Seeded Careers to MongoDB")
     
     return "Seed success"
