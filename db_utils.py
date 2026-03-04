@@ -7,6 +7,11 @@ load_dotenv()
 
 MONGO_URI = os.getenv('MONGO_URI')
 
+# Handle absolute paths for Vercel Serverless Functions
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+COURSES_PATH = os.path.join(BASE_DIR, 'data', 'courses.json')
+CAREERS_PATH = os.path.join(BASE_DIR, 'data', 'careers.json')
+
 # Initialize DB connection (Caching it for performance)
 _db = None
 
@@ -33,7 +38,7 @@ def get_db():
 def load_all_courses():
     db = get_db()
     if db == "local_json":
-        with open('data/courses.json', 'r', encoding='utf-8') as f:
+        with open(COURSES_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
     else:
         # Fetch from MongoDB
@@ -42,7 +47,7 @@ def load_all_courses():
 def load_all_careers():
     db = get_db()
     if db == "local_json":
-        with open('data/careers.json', 'r', encoding='utf-8') as f:
+        with open(CAREERS_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
     else:
         # Fetch careers from MongoDB
@@ -57,16 +62,16 @@ def seed_database():
 
     # Seed Courses
     if db.courses.count_documents({}) == 0:
-        with open('data/courses.json', 'r', encoding='utf-8') as f:
+        with open(COURSES_PATH, 'r', encoding='utf-8') as f:
             courses = json.load(f)
             db.courses.insert_many(courses)
-            print("Seeded Courses to MongoDB")
+            print("✅ Seeded Courses to MongoDB")
 
     # Seed Careers
     if db.careers.count_documents({}) == 0:
-        with open('data/careers.json', 'r', encoding='utf-8') as f:
+        with open(CAREERS_PATH, 'r', encoding='utf-8') as f:
             careers = json.load(f)
             db.careers.insert_one(careers)
-            print("Seeded Careers to MongoDB")
+            print("✅ Seeded Careers to MongoDB")
     
     return "Seed success"
