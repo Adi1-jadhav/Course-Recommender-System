@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Skill Gap Analysis{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-badge">Beta v2.0 AI Powered</div>
+    <h1>Build Your <span class="highlight">Professional Career Path</span></h1>
+    <p>We analyze your current skill set against industry standards to build a step-by-step roadmap specifically
+        designed to land your dream job.</p>
+
+    <div class="search-container professional-form">
+        <form action="{{ url_for('recommend') }}" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="current_skills">Your Current Skills (comma separated)</label>
+                    <input type="text" id="current_skills" name="current_skills"
+                        placeholder="e.g. Python, HTML, Basic Math..." required>
+                </div>
+                <div class="form-group">
+                    <label for="target_career">Your Dream Role</label>
+                    <select id="target_career" name="target_career" required>
+                        <option value="" disabled selected>Select an industry role...</option>
+                        {% for career in careers %}
+                        <option value="{{ career }}">{{ career }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary w-100 generate-path-btn">
+                <i class="fas fa-magic"></i> Generate AI Learning Path
+            </button>
+        </form>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <i class="fas fa-brain"></i>
+            <h3>TF-IDF AI Matching</h3>
+            <p>Our recommender uses true Machine Learning vectorization to find courses explicitly addressing your skill
+                gaps.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-route"></i>
+            <h3>Structured Roadmaps</h3>
+            <p>Instead of isolated suggestions, we provide an ordered, step-by-step curriculum.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Real-World Alignment</h3>
+            <p>Course mappings are aligned directly to current 2026 tech industry hiring criteria.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

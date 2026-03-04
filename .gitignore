@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+venv/
+.vercel/
+.vercel_cache/
+node_modules/
+.DS_Store
+data/*.json # Optional: Remove this if you want to keep local fallback in the cloud

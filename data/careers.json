@@ -1,0 +1,47 @@
+{
+    "Data Scientist": [
+        "Python",
+        "Statistics",
+        "Machine Learning",
+        "Data Visualization",
+        "SQL Databases",
+        "Pandas",
+        "Deep Learning"
+    ],
+    "Full Stack Web Developer": [
+        "HTML CSS",
+        "JavaScript",
+        "React JS",
+        "Node.js",
+        "MongoDB",
+        "API Design",
+        "Docker",
+        "Git"
+    ],
+    "AI Engineer": [
+        "Python",
+        "Mathematics",
+        "Deep Learning",
+        "Natural Language Processing",
+        "TensorFlow",
+        "Computer Vision",
+        "MLOps"
+    ],
+    "Cybersecurity Analyst": [
+        "Computer Networks",
+        "Network Security",
+        "Ethical Hacking",
+        "Cryptography",
+        "Linux Administration",
+        "Incident Response"
+    ],
+    "Cloud Solutions Architect": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Microservices",
+        "Cloud Security",
+        "CI/CD",
+        "Infrastructure as Code"
+    ]
+}

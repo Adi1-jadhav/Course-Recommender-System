@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Learning Roadmap{% endblock %}
+
+{% block content %}
+<div class="recommendations-container ml-path">
+
+    <div class="path-header">
+        <div class="header-badges">
+            <span class="badge badge-ai"><i class="fas fa-robot"></i> AI Generated Roadmap</span>
+        </div>
+        <h2>Path to <span class="highlight">{{ target_career }}</span></h2>
+
+        <div class="skill-gap-box">
+            <h4>Skills Analyzed & Missing Gaps:</h4>
+            <div class="missing-tags">
+                {% for ms in missing_skills %}
+                <span class="ms-tag">{{ ms }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="path-timeline">
+        {% for course in path %}
+        <div class="timeline-step">
+            <div class="step-marker">{{ course.step_number }}</div>
+            <div class="course-card horizontal-card">
+                <img src="{{ course.image }}" alt="{{ course.title }}" class="course-img">
+                <div class="course-content">
+                    <div class="meta-heads">
+                        <span class="badge badge-provider">{{ course.provider }}</span>
+                        <span class="badge badge-{{ course.difficulty|lower }}">{{ course.difficulty }}</span>
+                        <!-- AI Match Confidence Badge -->
+                        <span class="badge badge-ai-confidence tooltip" data-tooltip="TF-IDF Similarity Score">
+                            <i class="fas fa-check-circle"></i> {{ course.match_confidence }}% Match
+                        </span>
+                    </div>
+
+                    <h3>{{ course.title }}</h3>
+                    <p class="category"><i class="fas fa-bullseye"></i> Targeted Skill Gap: <strong>{{
+                            course.targeted_skill }}</strong></p>
+                    <p class="desc">{{ course.description }}</p>
+
+                    <div class="skills-covered">
+                        <strong>Covers:</strong>
+                        {% for s in course.skills %}
+                        <span class="pill">{{ s }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="course-actions">
+                        <a href="{{ course.url }}" class="btn-primary btn-small">Start Step {{ course.step_number }}</a>
+                        <button class="btn-secondary btn-small save-course-btn" data-id="{{ course.id }}"
+                            data-title="{{ course.title }}" data-provider="{{ course.provider }}"
+                            data-url="{{ course.url }}">
+                            <i class="far fa-heart"></i> Save to Timeline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="no-results">
+            <i class="fas fa-graduation-cap big-icon"></i>
+            <h2>You're Ready!</h2>
+            <p>Based on our AI analysis, you already possess the core skills required for a {{ target_career }}.
+                Consider looking for advanced interview prep material.</p>
+            <a href="{{ url_for('index') }}" class="btn-primary">Generate Another Path</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
