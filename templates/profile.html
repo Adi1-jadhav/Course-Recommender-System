@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}My Profile | CourseMatch{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ user.name[0] | upper }}
+        </div>
+        <div class="profile-info">
+            <h1>{{ user.name }}</h1>
+            <p><i class="fas fa-envelope"></i> {{ user.email }}</p>
+            <span class="badge badge-ai-confidence" style="margin-top: 0.5rem;"><i class="fas fa-check-circle"></i>
+                Verified Learner</span>
+        </div>
+        <div class="profile-stats">
+            <div class="stat-box">
+                <h3>{{ user.saved_courses | length }}</h3>
+                <p>Saved Courses</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-sections">
+        <div class="profile-courses">
+            <h2><i class="fas fa-bookmark" style="color: var(--primary-color);"></i> My Learning Path</h2>
+            <p class="section-desc">Courses you've bookmarked to help you achieve your career goals.</p>
+
+            {% if user.saved_courses %}
+            <div class="courses-grid">
+                {% for course in user.saved_courses %}
+                <div class="profile-course-card">
+                    <div class="card-img-placeholder">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="pc-content">
+                        <span class="badge badge-provider">{{ course.provider }}</span>
+                        <h4>{{ course.title }}</h4>
+                        <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small w-100"
+                            style="margin-top:auto;">Go to Course <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-results" style="padding: 2rem;">
+                <i class="far fa-folder-open big-icon" style="opacity:0.3;"></i>
+                <p style="margin-bottom: 1rem;">No saved courses yet. Build your learning path and save some!</p>
+                <a href="{{ url_for('index') }}" class="btn-primary btn-small" style="display:inline-block;">Explore
+                    Careers</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="profile-sidebar">
+            <div class="sidebar-box">
+                <h3><i class="fas fa-cog"></i> Account Settings</h3>
+                <ul class="settings-list">
+                    <li><a href="#"><i class="fas fa-lock"></i> Change Password</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#" style="color:red;"><i class="fas fa-trash"></i> Delete Account</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-box mt-3"
+                style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+                <h3 style="color: white;"><i class="fas fa-rocket"></i> Go Pro</h3>
+                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">Unlock advanced AI
+                    recommendations and mentorship.</p>
+                <button class="btn-small w-100"
+                    style="background: white; color: var(--text-main); font-weight: bold; border: none; cursor: pointer;">Upgrade
+                    Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

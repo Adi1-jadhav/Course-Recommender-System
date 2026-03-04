@@ -36,6 +36,7 @@ def load_user(user_id):
     return None
 
 @app.route('/')
+@login_required
 def index():
     # Attempt to seed DB if MONGO_URI is present but DB empty
     # In a real app this is usually a separate CI/CD task or Admin only
@@ -44,6 +45,11 @@ def index():
     careers = load_all_careers()
     career_list = list(careers.keys())
     return render_template('index.html', careers=career_list)
+
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', user=current_user)
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
@@ -142,4 +148,4 @@ app = app
 if __name__ == '__main__':
     # Initial setup
     seed_database()
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=True, port=5000)

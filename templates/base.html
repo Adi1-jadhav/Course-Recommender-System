@@ -23,7 +23,8 @@
             <li><a href="#" id="savedCoursesBtn">Saved Courses</a></li>
 
             {% if current_user.is_authenticated %}
-            <li class="user-greeting">Hi, {{ current_user.name }}</li>
+            <li class="user-greeting"><a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i> Profile ({{
+                    current_user.name }})</a></li>
             <li><a href="{{ url_for('logout') }}" class="btn-login">Logout</a></li>
             {% else %}
             <li><a href="{{ url_for('login') }}" class="btn-login">Login</a></li>
