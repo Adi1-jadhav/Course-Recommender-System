@@ -59,24 +59,26 @@ def load_all_careers():
         careers_raw = db.careers.find_one({}, {'_id': 0})
         return careers_raw if careers_raw else {}
 
-def seed_database():
-    """Helper to push local JSON files to the DB (one-time or check)"""
+def seed_database(force=False):
+    """Helper to push local JSON files to the DB and ensure data is fresh"""
     db = get_db()
     if db == "local_json" or db is None:
         return "Cannot seed: No valid MongoDB connection"
 
-    # Seed Courses
-    if db.courses.count_documents({}) == 0:
+    # Synchronize Courses (We check if a refresh is needed or force it)
+    if db.courses.count_documents({}) == 0 or force:
+        db.courses.delete_many({})  # Clear existing potentially stale data
         with open(COURSES_PATH, 'r', encoding='utf-8') as f:
             courses = json.load(f)
             db.courses.insert_many(courses)
-            print("[OK] Seeded Courses to MongoDB")
+            print("[OK] Synchronized Courses with MongoDB")
 
-    # Seed Careers
-    if db.careers.count_documents({}) == 0:
+    # Synchronize Careers
+    if db.careers.count_documents({}) == 0 or force:
+        db.careers.delete_many({})
         with open(CAREERS_PATH, 'r', encoding='utf-8') as f:
             careers = json.load(f)
             db.careers.insert_one(careers)
-            print("[OK] Seeded Careers to MongoDB")
+            print("[OK] Synchronized Careers with MongoDB")
     
-    return "Seed success"
+    return "Sync success"

@@ -43,9 +43,8 @@ def load_user(user_id):
 @app.route('/')
 @login_required
 def index():
-    # Attempt to seed DB if MONGO_URI is present but DB empty
-    # In a real app this is usually a separate CI/CD task or Admin only
-    seed_database() 
+    # Force sync DB to ensure the new real URLs are pushed to MongoDB Atlas
+    seed_database(force=True) 
     
     careers = load_all_careers()
     career_list = list(careers.keys())
