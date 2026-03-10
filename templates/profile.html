@@ -42,43 +42,51 @@
             <h2><i class="fas fa-rocket" style="color: var(--primary-color);"></i> My Active Learning Workspace</h2>
             <p class="section-desc">Track your progress, take personal study notes, and master your path.</p>
 
-            {% if user.saved_courses %}
-            <div class="courses-grid">
-                {% for course in user.saved_courses %}
-                <div class="profile-course-card {% if course.status == 'completed' %}status-completed{% endif %}"
-                    id="course-card-{{ course.id }}">
-                    <div class="card-img-placeholder">
-                        <i
-                            class="fas {% if course.status == 'completed' %}fa-check-circle{% else %}fa-laptop-code{% endif %}"></i>
-                    </div>
-                    <div class="pc-content">
-                        <span class="badge badge-provider">{{ course.provider }}</span>
-                        <h4>{{ course.title }}</h4>
-
-                        <!-- Notes Workspace -->
-                        <div class="notes-workspace">
-                            <label>Personal Study Notes</label>
-                            <textarea class="course-notes-area" placeholder="Take notes for this step..."
-                                data-id="{{ course.id }}">{{ course.notes }}</textarea>
-                            <span class="save-notes-feedback" id="feedback-{{ course.id }}">Saved to Cloud!</span>
+            {% if grouped_courses %}
+            {% for category, courses in grouped_courses.items() %}
+            <div class="domain-group" style="margin-bottom: 3rem;">
+                <h3 class="domain-header">
+                    <i class="fas fa-layer-group"></i> Domain: {{ category }}
+                    <span class="domain-count">{{ courses|length }} Steps</span>
+                </h3>
+                <div class="courses-grid" style="margin-top: 1rem;">
+                    {% for course in courses %}
+                    <div class="profile-course-card {% if course.status == 'completed' %}status-completed{% endif %}"
+                        id="course-card-{{ course.id }}">
+                        <div class="card-img-placeholder">
+                            <i
+                                class="fas {% if course.status == 'completed' %}fa-check-circle{% else %}fa-laptop-code{% endif %}"></i>
                         </div>
+                        <div class="pc-content">
+                            <span class="badge badge-provider">{{ course.provider }}</span>
+                            <h4>{{ course.title }}</h4>
 
-                        <div class="action-bar">
-                            <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small"
-                                style="flex:2;">Visit Course</a>
-                            <button class="btn-complete {% if course.status == 'completed' %}active{% endif %}"
-                                onclick="toggleCourseStatus(this, '{{ course.id }}')">
-                                <i class="fas fa-check"></i>
-                            </button>
-                            <button class="btn-secondary btn-small"
-                                onclick="removeSavedCourse('{{ course.id }}', true)">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                            <!-- Notes Workspace -->
+                            <div class="notes-workspace">
+                                <label>Personal Study Notes</label>
+                                <textarea class="course-notes-area" placeholder="Take notes for this step..."
+                                    data-id="{{ course.id }}">{{ course.notes }}</textarea>
+                                <span class="save-notes-feedback" id="feedback-{{ course.id }}">Saved to Cloud!</span>
+                            </div>
+
+                            <div class="action-bar">
+                                <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small"
+                                    style="flex:2;">Visit Course</a>
+                                <button class="btn-complete {% if course.status == 'completed' %}active{% endif %}"
+                                    onclick="toggleCourseStatus(this, '{{ course.id }}')">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn-secondary btn-small"
+                                    onclick="removeSavedCourse('{{ course.id }}', true)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
             {% else %}
             <div class="no-results" style="padding: 2rem;">
                 <i class="far fa-folder-open big-icon" style="opacity:0.3;"></i>

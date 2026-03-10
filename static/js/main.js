@@ -60,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: btn.dataset.id,
                 title: btn.dataset.title,
                 provider: btn.dataset.provider,
-                url: btn.dataset.url
+                url: btn.dataset.url,
+                category: btn.dataset.category
             };
 
             // 1. Sync with Database if Logged In

@@ -48,7 +48,16 @@ def index():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user=current_user)
+    # Group saved courses by category for a domain-wise view
+    saved_courses = getattr(current_user, 'saved_courses', []) or []
+    grouped = {}
+    for course in saved_courses:
+        cat = course.get('category', 'Shared Skills')
+        if cat not in grouped:
+            grouped[cat] = []
+        grouped[cat].append(course)
+    
+    return render_template('profile.html', user=current_user, grouped_courses=grouped)
 
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
