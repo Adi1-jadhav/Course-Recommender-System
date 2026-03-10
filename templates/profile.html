@@ -15,29 +15,66 @@
         </div>
         <div class="profile-stats">
             <div class="stat-box">
-                <h3>{{ user.saved_courses | length }}</h3>
-                <p>Saved Courses</p>
+                <h3 id="completedCount">{{ user.saved_courses | selectattr('status', 'equalto', 'completed') | list |
+                    length }}</h3>
+                <p>Completed</p>
             </div>
+            <div class="stat-box">
+                <h3>{{ user.saved_courses | length }}</h3>
+                <p>Total Roadmap</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overall Roadmap Progress -->
+    <div class="sidebar-box mb-2">
+        <div style="display:flex; justify-content:space-between; margin-bottom: 0.5rem;">
+            <h3>Roadmap Completion</h3>
+            <span id="progressText" style="font-weight: 700; color: var(--ai-color);">0%</span>
+        </div>
+        <div class="progress-container">
+            <div id="overallProgress" class="progress-fill"></div>
         </div>
     </div>
 
     <div class="profile-sections">
         <div class="profile-courses">
-            <h2><i class="fas fa-bookmark" style="color: var(--primary-color);"></i> My Learning Path</h2>
-            <p class="section-desc">Courses you've bookmarked to help you achieve your career goals.</p>
+            <h2><i class="fas fa-rocket" style="color: var(--primary-color);"></i> My Active Learning Workspace</h2>
+            <p class="section-desc">Track your progress, take personal study notes, and master your path.</p>
 
             {% if user.saved_courses %}
             <div class="courses-grid">
                 {% for course in user.saved_courses %}
-                <div class="profile-course-card">
+                <div class="profile-course-card {% if course.status == 'completed' %}status-completed{% endif %}"
+                    id="course-card-{{ course.id }}">
                     <div class="card-img-placeholder">
-                        <i class="fas fa-laptop-code"></i>
+                        <i
+                            class="fas {% if course.status == 'completed' %}fa-check-circle{% else %}fa-laptop-code{% endif %}"></i>
                     </div>
                     <div class="pc-content">
                         <span class="badge badge-provider">{{ course.provider }}</span>
                         <h4>{{ course.title }}</h4>
-                        <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small w-100"
-                            style="margin-top:auto;">Go to Course <i class="fas fa-external-link-alt"></i></a>
+
+                        <!-- Notes Workspace -->
+                        <div class="notes-workspace">
+                            <label>Personal Study Notes</label>
+                            <textarea class="course-notes-area" placeholder="Take notes for this step..."
+                                data-id="{{ course.id }}">{{ course.notes }}</textarea>
+                            <span class="save-notes-feedback" id="feedback-{{ course.id }}">Saved to Cloud!</span>
+                        </div>
+
+                        <div class="action-bar">
+                            <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small"
+                                style="flex:2;">Visit Course</a>
+                            <button class="btn-complete {% if course.status == 'completed' %}active{% endif %}"
+                                onclick="toggleCourseStatus(this, '{{ course.id }}')">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="btn-secondary btn-small"
+                                onclick="removeSavedCourse('{{ course.id }}', true)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

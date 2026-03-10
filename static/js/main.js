@@ -144,31 +144,85 @@ document.addEventListener('DOMContentLoaded', () => {
         listContainer.innerHTML = html;
     };
 
-    window.removeSavedCourse = function (id) {
-        let courses = getSavedFromLocal();
-        courses = courses.filter(c => c.id !== id);
-        saveToLocal(courses);
+    // --- Workspace Activity Tracking ---
+    window.toggleCourseStatus = async (btn, id) => {
+        const isCompleted = btn.classList.contains('active');
+        const newStatus = isCompleted ? 'pending' : 'completed';
+        const card = document.getElementById(`course-card-${id}`);
 
-        const item = document.getElementById(`saved-item-${id}`);
-        if (item) item.remove();
+        try {
+            const response = await fetch('/api/update-course-status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id, status: newStatus })
+            });
 
-        if (courses.length === 0) {
-            document.getElementById('savedCoursesList').innerHTML = '<p>You haven\'t saved any courses yet.</p>';
-        }
+            if (response.ok) {
+                btn.classList.toggle('active');
+                card.classList.toggle('status-completed');
 
-        const btn = document.querySelector(`.save-course-btn[data-id="${id}"]`);
-        if (btn) {
-            btn.classList.remove('saved');
-            btn.innerHTML = '<i class="far fa-heart"></i> Bookmark';
+                // Update icon
+                const icon = card.querySelector('.card-img-placeholder i');
+                icon.className = `fas ${newStatus === 'completed' ? 'fa-check-circle' : 'fa-laptop-code'}`;
+
+                updateProgressDisplay();
+            }
+        } catch (err) {
+            console.error('Failed to update status:', err);
         }
     };
+
+    // Auto-save notes logic with debounce
+    let notesTimeout;
+    document.addEventListener('input', (e) => {
+        if (e.target.classList.contains('course-notes-area')) {
+            clearTimeout(notesTimeout);
+            const textarea = e.target;
+            const id = textarea.dataset.id;
+            const feedback = document.getElementById(`feedback-${id}`);
+
+            notesTimeout = setTimeout(async () => {
+                try {
+                    await fetch('/api/save-notes', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id, notes: textarea.value })
+                    });
+
+                    // Show subtle feedback
+                    feedback.style.display = 'block';
+                    setTimeout(() => feedback.style.display = 'none', 2000);
+                } catch (err) {
+                    console.error('Notes sync failed');
+                }
+            }, 800);
+        }
+    });
+
+    function updateProgressDisplay() {
+        const totalCourses = document.querySelectorAll('.profile-course-card').length;
+        const completedCourses = document.querySelectorAll('.profile-course-card.status-completed').length;
+
+        const progressPercent = totalCourses > 0 ? Math.round((completedCourses / totalCourses) * 100) : 0;
+
+        const bar = document.getElementById('overallProgress');
+        const text = document.getElementById('progressText');
+        const count = document.getElementById('completedCount');
+
+        if (bar) bar.style.width = `${progressPercent}%`;
+        if (text) text.innerText = `${progressPercent}%`;
+        if (count) count.innerText = completedCourses;
+    }
+
+    // Initial progress setup
+    updateProgressDisplay();
 
     // --- Course Detail Modal Logic ---
     const courseModal = document.getElementById('courseModal');
     const courseDetailsBody = document.getElementById('courseDetailsBody');
     const closeDetailBtn = document.querySelector('.close-detail-btn');
 
-    // Delegate clicks for 'View Details' - We will update the HTML to include these
+    // Delegate clicks for 'View Details'
     document.addEventListener('click', (e) => {
         if (e.target.closest('.view-details-btn')) {
             const btn = e.target.closest('.view-details-btn');
@@ -225,4 +279,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    window.removeSavedCourse = function (id, fromProfile = false) {
+        let courses = getSavedFromLocal();
+        courses = courses.filter(c => c.id !== id);
+        saveToLocal(courses);
+
+        if (fromProfile) {
+            const item = document.getElementById(`course-card-${id}`);
+            if (item) item.remove();
+            updateProgressDisplay();
+        } else {
+            const item = document.getElementById(`saved-item-${id}`);
+            if (item) item.remove();
+        }
+
+        if (courses.length === 0 && !fromProfile) {
+            document.getElementById('savedCoursesList').innerHTML = '<p>You haven\'t saved any courses yet.</p>';
+        }
+
+        const btn = document.querySelector(`.save-course-btn[data-id="${id}"]`);
+        if (btn) {
+            btn.classList.remove('saved');
+            btn.innerHTML = '<i class="far fa-heart"></i> Bookmark';
+        }
+    };
 });

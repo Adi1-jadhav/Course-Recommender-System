@@ -808,7 +808,25 @@ a {
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
-    color: var(--text-muted);
+    color: var(--ai-color);
+}
+
+/* --- Workspace & Progress Tracking --- */
+.progress-container {
+    margin: 1.5rem 0 2rem;
+    background: #e2e8f0;
+    height: 12px;
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ai-color), #34d399);
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
 }
 
 .pc-content {
@@ -1158,9 +1176,76 @@ footer {
     content: '\f058';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
-    color: var(--ai-color);
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
-.modal-footer {
-    padding: 1.5rem 2.5rem 2.5rem;
+.action-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-complete {
+    flex: 1;
+    background: #f1f5f9;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-complete.active {
+    background: var(--ai-color);
+    color: white;
+    border-color: var(--ai-color);
+}
+
+/* User Notes Workspace */
+.notes-workspace {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.notes-workspace label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.course-notes-area {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    background: #fafafa;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.course-notes-area:focus {
+    background: white;
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.save-notes-feedback {
+    font-size: 0.75rem;
+    color: var(--ai-color);
+    margin-top: 0.3rem;
+    font-weight: 600;
+    display: none;
 }

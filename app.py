@@ -129,16 +129,53 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@app.route('/api/update-course-status', methods=['POST'])
+@login_required
+def update_course_status():
+    """Toggles completion status for a saved course"""
+    data = request.json
+    course_id = data.get('id')
+    new_status = data.get('status')
+    
+    db = get_db()
+    if db != "local_json" and db is not None:
+        from bson.objectid import ObjectId
+        db.users.update_one(
+            {"_id": ObjectId(current_user.id), "saved_courses.id": int(course_id)},
+            {"$set": {"saved_courses.$.status": new_status}}
+        )
+    return jsonify({"status": "success"})
+
+@app.route('/api/save-notes', methods=['POST'])
+@login_required
+def save_notes():
+    """Saves personal study notes for a specific course"""
+    data = request.json
+    course_id = data.get('id')
+    notes = data.get('notes')
+    
+    db = get_db()
+    if db != "local_json" and db is not None:
+        from bson.objectid import ObjectId
+        db.users.update_one(
+            {"_id": ObjectId(current_user.id), "saved_courses.id": int(course_id)},
+            {"$set": {"saved_courses.$.notes": notes}}
+        )
+    return jsonify({"status": "success"})
+
 @app.route('/api/save-course', methods=['POST'])
 @login_required
 def save_course():
     """Allows authenticated users to persist courses to the DB"""
     data = request.json
-    course_id = data.get('id')
+    data['status'] = 'pending'
+    data['notes'] = ''
+    
     db = get_db()
     if db != "local_json" and db is not None:
+        from bson.objectid import ObjectId
         db.users.update_one(
-            {"_id": current_user.id},
+            {"_id": ObjectId(current_user.id)},
             {"$addToSet": {"saved_courses": data}}
         )
     return jsonify({"status": "success"})
