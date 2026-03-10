@@ -62,13 +62,16 @@
                     <div class="meta-heads">
                         <span class="badge badge-provider">{{ course.provider }}</span>
                         <span class="badge badge-{{ course.difficulty|lower }}">{{ course.difficulty }}</span>
-                        <!-- AI Match Confidence Badge -->
-                        <span class="badge badge-ai-confidence tooltip" data-tooltip="TF-IDF Similarity Score">
-                            <i class="fas fa-check-circle"></i> {{ course.match_confidence }}% Match
-                        </span>
+                        <span class="badge badge-rating"><i class="fas fa-star" style="color:#f59e0b"></i> {{
+                            course.rating }}</span>
                     </div>
 
                     <h3>{{ course.title }}</h3>
+                    <div class="course-specs">
+                        <span><i class="far fa-clock"></i> {{ course.duration }}</span>
+                        <span><i class="fas fa-users"></i> {{ course.students }} Students</span>
+                    </div>
+
                     <p class="category"><i class="fas fa-bullseye"></i> Targeted Skill Gap: <strong>{{
                             course.targeted_skill }}</strong></p>
                     <p class="desc">{{ course.description }}</p>
@@ -81,11 +84,13 @@
                     </div>
 
                     <div class="course-actions">
-                        <a href="{{ course.url }}" class="btn-primary btn-small">Start Step {{ course.step_number }}</a>
+                        <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small">
+                            Go to Original Course <i class="fas fa-external-link-alt"></i>
+                        </a>
                         <button class="btn-secondary btn-small save-course-btn" data-id="{{ course.id }}"
                             data-title="{{ course.title }}" data-provider="{{ course.provider }}"
                             data-url="{{ course.url }}">
-                            <i class="far fa-heart"></i> Save to Timeline
+                            <i class="far fa-heart"></i> Bookmark
                         </button>
                     </div>
                 </div>

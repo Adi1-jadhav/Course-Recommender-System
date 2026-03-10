@@ -490,6 +490,27 @@ a {
     border: 1px solid var(--ai-color);
 }
 
+.badge-rating {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.course-specs {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+    font-weight: 500;
+}
+
+.course-specs span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
 .course-content h3 {
     font-size: 1.4rem;
     margin-bottom: 0.25rem;

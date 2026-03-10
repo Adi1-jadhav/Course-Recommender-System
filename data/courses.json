@@ -3,337 +3,117 @@
         "id": 1,
         "title": "Comprehensive Python Bootcamp",
         "category": "Programming",
-        "description": "Master Python by building real-world applications.",
+        "description": "Master Python by building real-world applications. Perfect for beginners entering AI.",
         "difficulty": "Beginner",
         "provider": "Udemy",
-        "url": "#",
+        "url": "https://www.udemy.com/course/complete-python-bootcamp/",
         "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf93c?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Python"
-        ]
+        ],
+        "rating": 4.8,
+        "duration": "22 Hours",
+        "students": "1.5M+"
     },
     {
         "id": 2,
         "title": "Mathematics for Machine Learning",
         "category": "Data Science",
-        "description": "Linear algebra, calculus, and probability foundational for AI.",
+        "description": "Linear algebra, calculus, and probability foundational for AI and Data Science.",
         "difficulty": "Intermediate",
         "provider": "Coursera",
-        "url": "#",
+        "url": "https://www.coursera.org/specializations/mathematics-machine-learning",
         "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Mathematics",
             "Statistics",
             "Linear Algebra"
-        ]
+        ],
+        "rating": 4.7,
+        "duration": "4 Months",
+        "students": "250k"
     },
     {
         "id": 3,
         "title": "Machine Learning by Andrew Ng",
         "category": "AI",
-        "description": "Learn the theory & practice of ML, regressions, and classifications.",
+        "description": "The world's most famous ML course. Learn the theory & practice of supervised learning.",
         "difficulty": "Intermediate",
         "provider": "Coursera",
-        "url": "#",
+        "url": "https://www.coursera.org/specializations/machine-learning-introduction",
         "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Machine Learning",
             "Python"
-        ]
+        ],
+        "rating": 4.9,
+        "duration": "3 Months",
+        "students": "4.8M"
     },
     {
         "id": 4,
         "title": "Deep Learning Specialization",
         "category": "AI",
-        "description": "Master neural networks, CNNs, RNNs, and PyTorch/TensorFlow.",
+        "description": "Master neural networks, CNNs, RNNs, and deployment on the cloud.",
         "difficulty": "Advanced",
         "provider": "DeepLearning.AI",
-        "url": "#",
+        "url": "https://www.deeplearning.ai/program/deep-learning-specialization/",
         "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Deep Learning",
             "TensorFlow"
-        ]
+        ],
+        "rating": 4.9,
+        "duration": "5 Months",
+        "students": "800k"
     },
     {
         "id": 5,
         "title": "Natural Language Processing with Python",
         "category": "AI",
-        "description": "Build LLMs, Transformers and conversational AI agents.",
+        "description": "Build LLMs, Transformers and conversational AI agents with NLTK and SpaCy.",
         "difficulty": "Advanced",
         "provider": "edX",
-        "url": "#",
+        "url": "https://www.edx.org/course/natural-language-processing",
         "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Natural Language Processing"
-        ]
+        ],
+        "rating": 4.6,
+        "duration": "10 Weeks",
+        "students": "120k"
     },
     {
         "id": 6,
         "title": "Computer Vision & Image Processing",
         "category": "AI",
-        "description": "Detect objects, classify images using deep learning.",
+        "description": "Detect objects, classify images and master OpenCV pipelines.",
         "difficulty": "Advanced",
         "provider": "Udacity",
-        "url": "#",
+        "url": "https://www.udacity.com/course/computer-vision-nanodegree--nd891",
         "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Computer Vision",
             "Deep Learning"
-        ]
+        ],
+        "rating": 4.7,
+        "duration": "3 Months",
+        "students": "45k"
     },
     {
         "id": 7,
         "title": "Introduction to Computer Networks",
         "category": "Cybersecurity",
-        "description": "Understand TCP/IP, routing, and DNS.",
+        "description": "Understand TCP/IP, routing, and DNS for modern system administration.",
         "difficulty": "Beginner",
         "provider": "Cisco",
-        "url": "#",
+        "url": "https://www.netacad.com/courses/networking/networking-essentials",
         "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=400",
         "skills": [
             "Computer Networks"
-        ]
-    },
-    {
-        "id": 8,
-        "title": "Network Security Fundamentals",
-        "category": "Cybersecurity",
-        "description": "Firewalls, IPS/IDS, and enterprise security.",
-        "difficulty": "Intermediate",
-        "provider": "CompTIA",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Network Security",
-            "Cybersecurity"
-        ]
-    },
-    {
-        "id": 9,
-        "title": "Ethical Hacking and Penetration Testing",
-        "category": "Cybersecurity",
-        "description": "Learn to attack to defend. Find vulnerabilities across systems.",
-        "difficulty": "Advanced",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Ethical Hacking"
-        ]
-    },
-    {
-        "id": 10,
-        "title": "Applied Cryptography",
-        "category": "Cybersecurity",
-        "description": "Learn symmetric and asymmetric encryption.",
-        "difficulty": "Intermediate",
-        "provider": "Stanford",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Cryptography"
-        ]
-    },
-    {
-        "id": 11,
-        "title": "Linux System Administration",
-        "category": "IT Ops",
-        "description": "Master command line, permissions, and server management.",
-        "difficulty": "Intermediate",
-        "provider": "RedHat",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Linux Administration"
-        ]
-    },
-    {
-        "id": 12,
-        "title": "Incident Response and Forensics",
-        "category": "Cybersecurity",
-        "description": "Handle real-time data breaches and recover networks safely.",
-        "difficulty": "Advanced",
-        "provider": "SANS",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Incident Response"
-        ]
-    },
-    {
-        "id": 13,
-        "title": "HTML, CSS and Javascript for Web Developers",
-        "category": "Web Dev",
-        "description": "The fundamentals of modern web development.",
-        "difficulty": "Beginner",
-        "provider": "Johns Hopkins",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "HTML CSS",
-            "JavaScript"
-        ]
-    },
-    {
-        "id": 14,
-        "title": "Complete React Web Developer Course",
-        "category": "Web Dev",
-        "description": "Learn React hooks, state management, and build SPAs.",
-        "difficulty": "Intermediate",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "React JS"
-        ]
-    },
-    {
-        "id": 15,
-        "title": "Node.js and Express API Bootcamp",
-        "category": "Web Dev",
-        "description": "Build fast, scalable backend APIs using Node and Express.",
-        "difficulty": "Intermediate",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Node.js",
-            "API Design"
-        ]
-    },
-    {
-        "id": 16,
-        "title": "MongoDB The Complete Developer's Guide",
-        "category": "Databases",
-        "description": "Master NoSQL architectures with MongoDB and Mongoose.",
-        "difficulty": "Intermediate",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "MongoDB"
-        ]
-    },
-    {
-        "id": 17,
-        "title": "Docker and Kubernetes Fundamentals",
-        "category": "DevOps",
-        "description": "Containerize your applications and orchestrate them efficiently.",
-        "difficulty": "Intermediate",
-        "provider": "Pluralsight",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1605788574163-547dfaa533e4?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Docker",
-            "Kubernetes"
-        ]
-    },
-    {
-        "id": 18,
-        "title": "Git and GitHub Bootcamp",
-        "category": "Tools",
-        "description": "Master version control for team collaboration.",
-        "difficulty": "Beginner",
-        "provider": "Coursera",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Git"
-        ]
-    },
-    {
-        "id": 19,
-        "title": "AWS Certified Solutions Architect",
-        "category": "Cloud Computing",
-        "description": "Pass the AWS Solutions Architect exam with this comprehensive course.",
-        "difficulty": "Advanced",
-        "provider": "A Cloud Guru",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1627398225258-1bbaba66ab21?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "AWS"
-        ]
-    },
-    {
-        "id": 20,
-        "title": "Microservices Architecture in Practice",
-        "category": "Architecture",
-        "description": "Design resilient and distributed microservices.",
-        "difficulty": "Advanced",
-        "provider": "O'Reilly",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Microservices"
-        ]
-    },
-    {
-        "id": 21,
-        "title": "Data Visualization with Python",
-        "category": "Data Science",
-        "description": "Matplotlib, Seaborn, and creating compelling data stories.",
-        "difficulty": "Intermediate",
-        "provider": "edX",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Data Visualization",
-            "Pandas"
-        ]
-    },
-    {
-        "id": 22,
-        "title": "Complete SQL Bootcamp",
-        "category": "Databases",
-        "description": "Learn to query, structure, and optimize relational databases.",
-        "difficulty": "Beginner",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "SQL Databases"
-        ]
-    },
-    {
-        "id": 23,
-        "title": "Cloud Security Practitioner",
-        "category": "Cloud Computing",
-        "description": "Secure AWS and Azure architectures effectively.",
-        "difficulty": "Advanced",
-        "provider": "Coursera",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1627398225258-1bbaba66ab21?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Cloud Security",
-            "AWS"
-        ]
-    },
-    {
-        "id": 24,
-        "title": "CI/CD Pipeline with Jenkins",
-        "category": "DevOps",
-        "description": "Automate deployments seamlessly with Continuous Integration.",
-        "difficulty": "Intermediate",
-        "provider": "Udemy",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1605788574163-547dfaa533e4?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "CI/CD"
-        ]
-    },
-    {
-        "id": 25,
-        "title": "Infrastructure as Code with Terraform",
-        "category": "DevOps",
-        "description": "Deploy infrastructure using code across multiple cloud providers.",
-        "difficulty": "Advanced",
-        "provider": "Pluralsight",
-        "url": "#",
-        "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80&w=400",
-        "skills": [
-            "Infrastructure as Code",
-            "AWS"
-        ]
+        ],
+        "rating": 4.8,
+        "duration": "70 Hours",
+        "students": "200k"
     }
 ]
