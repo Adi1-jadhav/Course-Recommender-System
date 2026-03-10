@@ -9,7 +9,38 @@
         <div class="header-badges">
             <span class="badge badge-ai"><i class="fas fa-robot"></i> AI Generated Roadmap</span>
         </div>
+
+        <div class="export-btn-container">
+            <button onclick="window.print()" class="btn-secondary btn-small">
+                <i class="fas fa-file-pdf"></i> Export Roadmap to PDF
+            </button>
+        </div>
         <h2>Path to <span class="highlight">{{ target_career }}</span></h2>
+
+        <!-- Roadmap Insights Summary Card -->
+        <div class="roadmap-summary">
+            <div class="summary-item">
+                <i class="fas fa-layer-group"></i>
+                <div class="si-info">
+                    <span>Steps</span>
+                    <strong>{{ path | length }} Modules</strong>
+                </div>
+            </div>
+            <div class="summary-item">
+                <i class="fas fa-clock"></i>
+                <div class="si-info">
+                    <span>Estimated Path Time</span>
+                    <strong>{{ (path | length * 4) }} - {{ (path | length * 10) }} weeks</strong>
+                </div>
+            </div>
+            <div class="summary-item">
+                <i class="fas fa-signal"></i>
+                <div class="si-info">
+                    <span>Focus Level</span>
+                    <strong>Intermediate</strong>
+                </div>
+            </div>
+        </div>
 
         <div class="skill-gap-box">
             <h4>Skills Analyzed & Missing Gaps:</h4>

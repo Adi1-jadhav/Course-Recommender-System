@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- AI Loader Logic ---
+    const generateForm = document.querySelector('.professional-form form');
+    const aiLoader = document.getElementById('aiLoader');
+    const loadingStatus = document.getElementById('loadingStatus');
+
+    if (generateForm) {
+        generateForm.addEventListener('submit', () => {
+            aiLoader.style.display = 'flex';
+
+            const statuses = [
+                "Analyzing your skill profile...",
+                "Calculating tech stacks...",
+                "Scanning global course catalogs...",
+                "Identifying industry skill gaps...",
+                "Optimizing learning sequence...",
+                "Generating personalized roadmap..."
+            ];
+
+            let statusIndex = 0;
+            setInterval(() => {
+                statusIndex = (statusIndex + 1) % statuses.length;
+                loadingStatus.style.opacity = 0;
+                setTimeout(() => {
+                    loadingStatus.innerText = statuses[statusIndex];
+                    loadingStatus.style.opacity = 1;
+                }, 300);
+            }, 3000);
+        });
+    }
 
     // Manage localStorage for Saved Courses (Local fallback / guest mode)
     const getSavedFromLocal = () => {

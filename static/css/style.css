@@ -304,6 +304,55 @@ a {
     margin-bottom: 2rem;
 }
 
+/* Roadmap Summary Card */
+.roadmap-summary {
+    background: var(--white);
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.summary-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: var(--bg-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.si-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.si-info span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.si-info strong {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
 .skill-gap-box {
     background: var(--white);
     padding: 2rem;
@@ -886,9 +935,112 @@ footer {
     .course-actions {
         flex-direction: column;
         align-items: stretch;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+.export-btn-container {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+/* --- AI Loading Overlay --- */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+.ai-loader {
+    width: 80px;
+    height: 80px;
+    border: 5px solid var(--bg-color);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
 
-    .btn-small {
-        width: 100%;
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    text-align: center;
+}
+
+.loading-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.loading-status {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* --- Export/Print Mode --- */
+@media print {
+
+    .navbar,
+    footer,
+    .course-actions,
+    .btn-secondary,
+    .save-course-btn,
+    .hero-badge,
+    .export-btn-container,
+    .flash-messages {
+        display: none !important;
+    }
+
+    .container,
+    .ml-path {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .horizontal-card {
+        box-shadow: none !important;
+        border: 1px solid var(--border-color) !important;
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+
+    .step-marker {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
     }
 }
