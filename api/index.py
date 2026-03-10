@@ -56,8 +56,10 @@ def index():
 def profile():
     return render_template('profile.html', user=current_user)
 
-@app.route('/recommend', methods=['POST'])
+@app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
+    if request.method == 'GET':
+        return redirect(url_for('index'))
     current_skills = request.form.get('current_skills', '')
     target_career = request.form.get('target_career', '')
     

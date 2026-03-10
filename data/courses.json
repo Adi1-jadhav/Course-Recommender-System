@@ -115,5 +115,90 @@
         "rating": 4.8,
         "duration": "70 Hours",
         "students": "200k"
+    },
+    {
+        "id": 8,
+        "title": "Ethical Hacking and Penetration Testing",
+        "category": "Cybersecurity",
+        "description": "Learn to attack to defend. Find vulnerabilities across enterprise systems.",
+        "difficulty": "Advanced",
+        "provider": "Udemy",
+        "url": "https://www.udemy.com/course/learn-ethical-hacking-from-scratch/",
+        "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=400",
+        "skills": [
+            "Ethical Hacking",
+            "Metasploit"
+        ],
+        "rating": 4.7,
+        "duration": "16 Hours",
+        "students": "500k"
+    },
+    {
+        "id": 9,
+        "title": "Full Stack Web Development with React",
+        "category": "Web Dev",
+        "description": "Master MERN stack (MongoDB, Express, React, Node) and deployment.",
+        "difficulty": "Intermediate",
+        "provider": "Udemy",
+        "url": "https://www.udemy.com/course/the-complete-web-development-bootcamp/",
+        "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400",
+        "skills": [
+            "React JS",
+            "Node.js",
+            "MongoDB"
+        ],
+        "rating": 4.8,
+        "duration": "65 Hours",
+        "students": "900k"
+    },
+    {
+        "id": 10,
+        "title": "AWS Certified Solutions Architect",
+        "category": "Cloud",
+        "description": "Learn to design highly available and scalable systems on AWS.",
+        "difficulty": "Advanced",
+        "provider": "Coursera",
+        "url": "https://www.coursera.org/learn/aws-fundamentals-addressing-security-risk",
+        "image": "https://images.unsplash.com/photo-1627398225258-1bbaba66ab21?auto=format&fit=crop&q=80&w=400",
+        "skills": [
+            "AWS",
+            "Cloud Computing"
+        ],
+        "rating": 4.7,
+        "duration": "5 Months",
+        "students": "150k"
+    },
+    {
+        "id": 11,
+        "title": "Docker and Kubernetes Fundamentals",
+        "category": "DevOps",
+        "description": "Containerize your applications and orchestrate them for production.",
+        "difficulty": "Intermediate",
+        "provider": "Pluralsight",
+        "url": "https://www.pluralsight.com/courses/docker-kubernetes-fundamentals",
+        "image": "https://images.unsplash.com/photo-1605788574163-547dfaa533e4?auto=format&fit=crop&q=80&w=400",
+        "skills": [
+            "Docker",
+            "Kubernetes"
+        ],
+        "rating": 4.5,
+        "duration": "6 Hours",
+        "students": "80k"
+    },
+    {
+        "id": 12,
+        "title": "Linux System Administration",
+        "category": "IT Ops",
+        "description": "Master command line, permissions, and server management.",
+        "difficulty": "Intermediate",
+        "provider": "RedHat",
+        "url": "https://www.redhat.com/en/services/training/rh124-red-hat-system-administration-i",
+        "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80&w=400",
+        "skills": [
+            "Linux Administration"
+        ],
+        "rating": 4.8,
+        "duration": "40 Hours",
+        "students": "30k"
     }
 ]
