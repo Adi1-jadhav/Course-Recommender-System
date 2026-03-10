@@ -1065,3 +1065,102 @@ footer {
         -webkit-print-color-adjust: exact;
     }
 }
+
+/* --- Detail Modal --- */
+.detail-modal {
+    max-width: 700px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.close-detail-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal-course-header {
+    position: relative;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.modal-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.modal-header-info {
+    position: relative;
+    color: white;
+    z-index: 10;
+}
+
+.modal-header-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    font-weight: 600;
+}
+
+.modal-body-content {
+    padding: 2.5rem;
+}
+
+.modal-body-content h3 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.modal-body-content p {
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.curriculum-preview h4 {
+    margin-bottom: 1rem;
+}
+
+.curriculum-preview ul {
+    list-style: none;
+}
+
+.curriculum-preview li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.curriculum-preview li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--ai-color);
+}
+
+.modal-footer {
+    padding: 1.5rem 2.5rem 2.5rem;
+}

@@ -159,7 +159,70 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = document.querySelector(`.save-course-btn[data-id="${id}"]`);
         if (btn) {
             btn.classList.remove('saved');
-            btn.innerHTML = '<i class="far fa-heart"></i> Save';
+            btn.innerHTML = '<i class="far fa-heart"></i> Bookmark';
         }
     };
+
+    // --- Course Detail Modal Logic ---
+    const courseModal = document.getElementById('courseModal');
+    const courseDetailsBody = document.getElementById('courseDetailsBody');
+    const closeDetailBtn = document.querySelector('.close-detail-btn');
+
+    // Delegate clicks for 'View Details' - We will update the HTML to include these
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.view-details-btn')) {
+            const btn = e.target.closest('.view-details-btn');
+            const courseData = {
+                title: btn.dataset.title,
+                provider: btn.dataset.provider,
+                desc: btn.dataset.desc,
+                rating: btn.dataset.rating,
+                duration: btn.dataset.duration,
+                url: btn.dataset.url,
+                img: btn.dataset.img
+            };
+
+            courseDetailsBody.innerHTML = `
+                <div class="modal-course-header">
+                    <img src="${courseData.img}" class="modal-hero-img">
+                    <div class="modal-header-info">
+                        <h2>${courseData.title}</h2>
+                        <span class="badge badge-provider">${courseData.provider}</span>
+                        <div class="modal-stats">
+                            <span><i class="fas fa-star"></i> ${courseData.rating}</span>
+                            <span><i class="fas fa-clock"></i> ${courseData.duration}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body-content">
+                    <h3>Course Overview</h3>
+                    <p>${courseData.desc}</p>
+                    <div class="curriculum-preview">
+                        <h4>What you'll learn:</h4>
+                        <ul>
+                            <li>Industry Standard Practices</li>
+                            <li>Hands-on Project Portfolio</li>
+                            <li>Professional Interview Prep</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="${courseData.url}" target="_blank" class="btn-primary w-100">Go to Original Site <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            `;
+            courseModal.style.display = 'block';
+        }
+    });
+
+    if (closeDetailBtn) {
+        closeDetailBtn.onclick = () => courseModal.style.display = 'none';
+    }
+
+    if (courseModal) {
+        window.addEventListener('click', (event) => {
+            if (event.target == courseModal) {
+                courseModal.style.display = 'none';
+            }
+        });
+    }
 });

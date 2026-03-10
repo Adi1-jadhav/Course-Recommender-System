@@ -85,8 +85,14 @@
 
                     <div class="course-actions">
                         <a href="{{ course.url }}" target="_blank" class="btn-primary btn-small">
-                            Go to Original Course <i class="fas fa-external-link-alt"></i>
+                            Take Course <i class="fas fa-external-link-alt"></i>
                         </a>
+                        <button class="btn-secondary btn-small view-details-btn" data-title="{{ course.title }}"
+                            data-provider="{{ course.provider }}" data-desc="{{ course.description }}"
+                            data-rating="{{ course.rating }}" data-duration="{{ course.duration }}"
+                            data-img="{{ course.image }}" data-url="{{ course.url }}">
+                            Quick Preview
+                        </button>
                         <button class="btn-secondary btn-small save-course-btn" data-id="{{ course.id }}"
                             data-title="{{ course.title }}" data-provider="{{ course.provider }}"
                             data-url="{{ course.url }}">
