@@ -30,7 +30,7 @@
         <ul class="nav-links">
             {% if current_user.is_authenticated %}
             <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="#" id="savedCoursesBtn">Saved Courses</a></li>
+            <li><a href="{{ url_for('profile') }}">My Workspace</a></li>
             <li class="user-greeting"><a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i> Profile ({{
                     current_user.name }})</a></li>
             <li><a href="{{ url_for('logout') }}" class="btn-login">Logout</a></li>
