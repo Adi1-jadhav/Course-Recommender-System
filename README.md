@@ -7,7 +7,7 @@ This project is a web-based course recommendation system built using Python and 
 The idea came from observing that learners often feel overwhelmed by the number of courses available online. With no clear guidance, they waste time browsing through multiple platforms without knowing which course best fits their skill level and interest.
 
 This system aims to provide personalized course suggestions by taking user input or preferences and matching them with curated course data.
-
+ 
 ## Real-World Problem Solved
 
 Online learners face three common problems:
