@@ -1,49 +1,54 @@
-# Course-Recommender-System
+# 🚀 AI Course Recommender & Learning Workspace
 
-This project is a web-based course recommendation system built using Python and Flask. It helps users discover relevant online courses based on their interests, improving the learning experience by reducing the time spent searching across platforms.
+A professional-grade, AI-driven learning path generator that transforms your career goals into high-impact educational roadmaps. This system uniquely combines personalized ML matching with a dedicated study workspace.
 
-## About the Idea
+---
 
-The idea came from observing that learners often feel overwhelmed by the number of courses available online. With no clear guidance, they waste time browsing through multiple platforms without knowing which course best fits their skill level and interest.
+## 🌟 Premium Features
 
-This system aims to provide personalized course suggestions by taking user input or preferences and matching them with curated course data.
- 
-## Real-World Problem Solved
+### 🧠 **AI-Powered Career Roadmapping**
+- **Dynamic Matching**: Uses TF-IDF analysis to bridge the gap between your current skills and target career roles (e.g., AI Engineer, Cyber Analyst).
+- **Domain-Wise Organization**: Roadmaps are automatically categorized into technical domains (e.g., Programming, Math, Data Science) for a structured learning journey.
 
-Online learners face three common problems:
+### 💼 **Professional Learning Workspace**
+- **Progress Tracking**: Mark modules as "In Progress" or "Completed" and watch your **Overall Progress Bar** climb in real-time.
+- **Cloud-Synced Study Notes**: Take personal notes for every course step. Notes are automatically saved to the cloud with debounced auto-syncing logic.
 
-1. **Too many options** – It's difficult to choose the right course among hundreds.
-2. **Lack of personalization** – Most platforms suggest generic courses, not tailored ones.
-3. **Wasted time** – Users often start a course that doesn't match their needs and drop it later.
+### 🔍 **Verified Course Previews**
+- **Spotlight Modals**: Preview course curriculum, ratings (⭐), and duration without leaving the platform.
+- **Global Course Database**: Includes real-world integration with Coursera, Udemy, and edX featuring verified links and enrollment statistics.
 
-Our system addresses these issues by:
+### 📄 **Utility & Export Tools**
+- **Export to PDF**: Professional-grade PDF generation for roadmaps to keep your learning plan offline.
+- **Interactive AI Loader**: A high-end "Thinking" overlay that guides you through the analysis phase with real-time status updates.
 
-- Giving personalized recommendations
-- Providing direct links to relevant course pages
-- Allowing users to save favorite courses locally
+---
 
-## What Makes It Different
+## 🏗️ Technical Architecture
 
-Unlike major platforms that focus only on hosting courses, this system focuses solely on **recommending** the most relevant courses across platforms. It acts as a **discovery assistant** rather than a course provider.
+- **Backend**: Python Flask with Serverless Vercel optimization.
+- **Database**: MongoDB Atlas for user persistence (fallback to local JSON for zero-config local testing).
+- **Intelligence**: Scikit-learn TF-IDF Vectorization for matching skills to industry categories.
+- **UI/UX**: Custom Glassmorphism CSS with Font Awesome 6 icons and Outfit typography.
+- **Storage**: Hybrid system using MongoDB for profiles and LocalStorage for fast guest interaction.
 
-Key differences:
+---
 
-- Built as an open and lightweight tool for faster course recommendations
-- Includes secure **sign-in and sign-up** functionality to personalize user experience
-- Stores saved courses and progress using **localStorage**
-- Simple, clean, and user-friendly interface
-- Feedback modal for improving course suggestions over time
-- Optionally integrates with AI logic for smarter recommendations in the future
+## 🛠️ System Requirements & Setup
 
-## Technologies Used
+1. **Environment**: Python 3.9+
+2. **Database**: MongoDB Atlas (Sign up for a free tier M0 cluster).
+3. **API Keys**: Add `MONGO_URI` and `SECRET_KEY` to your `.env` file.
 
-- Python
-- Flask (backend)
-- HTML, CSS, JavaScript (frontend)
-- LocalStorage (for saving data)
-- SQLite or JSON (for course data)
+### Installation
 
-## How to Run
-
+```bash
+# Clone the repository
 git clone https://github.com/Adi1-jadhav/Course-Recommender-System.git
 cd Course-Recommender-System
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the project locally
+python app.py
